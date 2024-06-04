@@ -221,20 +221,21 @@ const getState = ({ getStore, getActions, setStore }) => {
   
 		fillCharacters: async () => {
 		  const store = getStore();
-		  const actions = getActions();
+		  //const actions = getActions();
   
-		  const apiURLFillPeople = `${store.urlBase}/api/fill/people`;
+		  const apiURLFillPeople = `${store.urlBase}/api/characters`;
   
 		  try {
 			const response = await fetch(apiURLFillPeople);
 			let msg = await response.json();
 			if (!response.ok) {
-			  actions.getCharacters();
-			  console.log(msg);
+			  //actions.getCharacters();
+			  //console.log(msg);
 			  return false;
 			}
-			actions.getCharacters();
-			console.log(msg);
+			setStore({characters:msg})
+			//actions.getCharacters();
+			//console.log(msg);
 		  } catch (error) {
 			console.error(error);
 		  }
@@ -263,20 +264,21 @@ const getState = ({ getStore, getActions, setStore }) => {
   
 		fillPlanets: async () => {
 		  const store = getStore();
-		  const actions = getActions();
+		  //const actions = getActions();
   
-		  const apiURLFillPlanet = `${store.urlBase}/api/fill/planets`;
+		  const apiURLFillPlanet = `${store.urlBase}/api/planets`;
   
 		  try {
 			const response = await fetch(apiURLFillPlanet);
 			let msg = await response.json();
 			if (!response.ok) {
-			  actions.getPlanets();
-			  console.log(msg);
+			  //actions.getPlanets();
+			  //console.log(msg);
 			  return false;
 			}
-			actions.getPlanets();
-			console.log(msg);
+			setStore({planets:msg })
+			//actions.getPlanets();
+			//console.log(msg);
 		  } catch (error) {
 			console.error(error);
 		  }
